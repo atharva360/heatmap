@@ -82,7 +82,7 @@ def stockPrediction(df):
 
     # Plpot the average monthly returns
     # df_AVG.plot.bar()
-    st.subheader('Monthly prediction')
+    st.subheader('Monthly Performance')
     st.set_option('deprecation.showPyplotGlobalUse', False)
     ab = df_AVG.plot.bar()
     st.pyplot()
@@ -165,7 +165,7 @@ def mfPrediction(df):
 
     # Plpot the average monthly returns
     # df_AVG.plot.bar()
-    st.subheader('Monthly prediction')
+    st.subheader('Monthly performance')
     st.set_option('deprecation.showPyplotGlobalUse', False)
     ab = df_AVG.plot.bar()
     st.pyplot()
@@ -175,16 +175,16 @@ def mfPrediction(df):
 
 
 #Load stock data
-st.title('STOCK TREND PREDICTION')
+st.title('Find the Best & Worst Months for investment of Stock')
 user_input = st.text_input('Enter The Stock Ticker', 'TATAPOWER.NS')
-start = '1990-01-02'
+start = '2010-01-02'
 df = data.DataReader(user_input,'yahoo',start,date.today())
 stockPrediction(df)
 
 #Load mf data
-st.title('Mutual Fund TREND PREDICTION')
+st.title('Find the Best & Worst Months for investment of Mutual Funds')
 user_input = st.text_input('Enter The Mutual Fund Ticker', 'ICICIPRULI.NS')
-start = '2015-01-02'
+start = '2010-01-02'
 df1 = data.DataReader(user_input,'yahoo',start,date.today())
 mfPrediction(df1)
 
