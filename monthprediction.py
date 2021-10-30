@@ -83,6 +83,7 @@ def stockPrediction(df):
     # Plpot the average monthly returns
     # df_AVG.plot.bar()
     st.subheader('Monthly Performance')
+    st.subheader('Axes:\nX Axis: Average monthly returns(Standardize value for all stocks) Y Axis: Months')
     st.set_option('deprecation.showPyplotGlobalUse', False)
     ab = df_AVG.plot.bar()
     st.pyplot()
