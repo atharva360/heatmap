@@ -82,7 +82,7 @@ def stockPrediction(df):
 
     
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    ab = df_AVG1.plot.bar(x='Month',y='AVG',xlabel='Months', ylabel='DSR Average', title='Monthly Performance of ')
+    ab = df_AVG1.plot.bar(x='Month',y='AVG',xlabel='Months', ylabel='DSR Average', title='Monthly Performance of '+user_input)
     st.pyplot()
 
 
