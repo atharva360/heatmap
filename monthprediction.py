@@ -72,21 +72,17 @@ def stockPrediction(df):
 
     # Create new dataframe
     df_AVG = pd.DataFrame()
+    df_AVG1  = pd.DataFrame()
     # Get the average returns for each month and add the values under a new column 'AVG'
-    df_AVG['AVG'] = AVG(Jan) + AVG(Feb) + AVG(Mar) + AVG(Apr) + AVG(May) + AVG(June) + AVG(July) + AVG(Aug) + AVG(
-        Sept) + AVG(Oct) + AVG(Nov) + AVG(Dec)
+    df_AVG['AVG'] = AVG(Jan) + AVG(Feb) + AVG(Mar) + AVG(Apr) + AVG(May) + AVG(June) + AVG(July) + AVG(Aug) + AVG(Sept) + AVG(Oct) + AVG(Nov) + AVG(Dec)
     # set index to be the corresponding integer value of month
-    df_AVG = df_AVG.set_index(df_AVG.index + 1)
+    df_AVG1 = df_AVG * 100
+    df_AVG1['Month'] = 'Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'
+    df_AVG1 = df_AVG1.set_index(df_AVG1.index + 1)
 
-    # show the average monthly returns
-    df_AVG = df_AVG * 100
-
-    # Plpot the average monthly returns
-    # df_AVG.plot.bar()
-    st.subheader('Monthly Performance')
-    st.subheader('Axes:\nX Axis: Average monthly returns(Standardize value for all stocks) Y Axis: Months')
+    
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    ab = df_AVG.plot.bar(x='Month',y='AVG',xlabel='Months', ylabel='DSR Average', title='Monthly Performance of ')
+    ab = df_AVG1.plot.bar(x='Month',y='AVG',xlabel='Months', ylabel='DSR Average', title='Monthly Performance of ')
     st.pyplot()
 
 
