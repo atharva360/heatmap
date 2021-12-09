@@ -3,7 +3,7 @@ import pandas_datareader as data
 from datetime import date
 import matplotlib.pyplot as plt
 import streamlit as st
-
+import plotly.express as px
 
 
 
@@ -83,6 +83,8 @@ def stockPrediction(df):
     
     st.set_option('deprecation.showPyplotGlobalUse', False)
     ab = df_AVG1.plot.bar(x='Month',y='AVG',xlabel='Months', ylabel='DSR Average', title='Monthly Performance of ')
+    fig = px.pie(df_AVG1, values='AVG', names='Month',title='Pie Chart for Monthly performance of')
+    cd = fig.show()
     st.pyplot()
 
 
