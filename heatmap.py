@@ -8,7 +8,7 @@ import streamlit as st
 
 
 st.title('STOCK HEATMAP')
-nifty = nse.index_df(symbol="NIFTY 50", from_date=date(2005,8,1), to_date=datetime.now().date())
+nifty = nse.index_df(symbol="NIFTY 50", from_date=date(2000,1,1), to_date=datetime.now().date())
 nifty['M'] = nifty['HistoricalDate'].dt.month
 nifty['Y'] = nifty['HistoricalDate'].dt.year
 # print(nifty)
