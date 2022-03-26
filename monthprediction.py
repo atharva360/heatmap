@@ -3,7 +3,7 @@ import pandas_datareader as data
 from datetime import date
 import matplotlib.pyplot as plt
 import streamlit as st
-
+import plotly.express as px
 
 
 
@@ -78,12 +78,19 @@ def stockPrediction(df):
     # set index to be the corresponding integer value of month
     df_AVG1 = df_AVG * 100
     df_AVG1['Month'] = 'Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'
+    # df_AVG1['MontNumber'] = 1,2,3,4,5,6,7,8,9,10,11,12
     df_AVG1 = df_AVG1.set_index(df_AVG1.index + 1)
 
     
+
+    
+    st.write(df_AVG1)
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    ab = df_AVG1.plot.bar(x='Month',y='AVG',xlabel='Months', ylabel='DSR Average', title='Monthly Performance of '+user_input)
-    st.pyplot()
+
+
+   
+    fig = px.histogram(df_AVG1, x="Month",y='AVG')
+    st.plotly_chart(fig) 
 
 
 
@@ -159,14 +166,17 @@ def mfPrediction(df):
     df_AVG = df_AVG.set_index(df_AVG.index + 1)
 
     # show the average monthly returns
-    df_AVG = df_AVG * 100
+    df_AVG1 = df_AVG * 100
+    
+    df_AVG1['Month'] = 'Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'
+    df_AVG1 = df_AVG1.set_index(df_AVG1.index + 1)
 
     # Plpot the average monthly returns
-    # df_AVG.plot.bar()
+    st.write(df_AVG1)
     st.subheader('Monthly performance')
     st.set_option('deprecation.showPyplotGlobalUse', False)
-    ab = df_AVG.plot.bar()
-    st.pyplot()
+    fig = px.histogram(df_AVG1, x="Month",y='AVG')
+    st.plotly_chart(fig) 
 
 
 
@@ -185,8 +195,3 @@ user_input = st.text_input('Enter The Mutual Fund Ticker', 'ICICIPRULI.NS')
 start = '2010-01-02'
 df1 = data.DataReader(user_input,'yahoo',start,date.today())
 mfPrediction(df1)
-
-
-
-
-
