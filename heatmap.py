@@ -7,7 +7,7 @@ import jugaad_data.nse as nse
 import streamlit as st
 
 
-st.title('STOCK HEATMAP')
+st.title('NIFTY 50 HEATMAP')
 nifty = nse.index_df(symbol="NIFTY 50", from_date=date(2012,1,1), to_date=datetime.now().date())
 nifty['M'] = nifty['HistoricalDate'].dt.month
 nifty['Y'] = nifty['HistoricalDate'].dt.year
