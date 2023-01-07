@@ -5,3 +5,4 @@ seaborn==0.11.2
 matplotlib==3.4.
 pandas_datareader
 plotly
+yfinance 
